@@ -55,6 +55,55 @@ def superuser_list(request):
     return render(request, 'management/superuser_list.html', context)
 
 
+def create_superuser(request):
+
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username  = request.POST.get('username')
+    
+
+        father_name = request.POST.get('father_name')
+        mother_name = request.POST.get('mother_name')
+       
+        phone = request.POST.get('phone')
+        gender = request.POST.get('gender')
+        email = request.POST.get('email')
+        nid = request.POST.get('nid')
+        blood_group = request.POST.get('blood_group')
+        address = request.POST.get('address')
+
+
+        users = User.objects.create_superuser(
+            username=username,  
+            first_name=first_name,  
+            last_name=last_name,   
+            email = "abc@gmail.com",
+            is_superuser = True
+        )
+        # user.save()
+        # profile = user.profile
+        profile = users.profile
+        
+        # Update the existing profile if necessary
+        profile.father_name = father_name
+        profile.mother_name = mother_name
+        profile.phone = phone
+        profile.nid = nid
+        profile.gender = gender
+        profile.blood_group = blood_group
+        profile.address = address
+
+        profile.save()
+
+        return redirect('superuser_list')
+
+    
+
+
+    return render(request,'management/create_superuser.html')
+
+
 def staff_list(request):
     # print(request.club_id)
     staff_members = User.objects.filter(is_staff=True)  
