@@ -20,7 +20,7 @@
     <!--navigation-->
     <ul class="metismenu" id="sidenav">
       <li>
-        <a href="{% url 'home' %}" class="has-arrow">
+        <a href="{% url 'management:home' %}" class="has-arrow">
           <div class="parent-icon"><i class="material-icons-outlined">home</i>
           </div>
           <div class="menu-title">Dashboard</div>
@@ -35,15 +35,20 @@
             <div class="menu-title">Users</div>
           </a>
       <ul>
-          <li><a href="{% url 'superuser-list' %}"><i
+          <li><a href="{% url 'management:superuser-list' %}"><i
                   class="material-icons-outlined">arrow_right</i>Superuser List</a>
-            </li>
-          <li><a href="{% url 'staff-list' %}"><i
+          </li>
+          <li><a href="{% url 'management:staff-list' %}"><i
                   class="material-icons-outlined">arrow_right</i>Staff List</a>
           </li>
-          <li><a href="{% url 'staff-list' %}"><i
+          
+          <li><a href="{% url 'management:customer' %}"><i
             class="material-icons-outlined">arrow_right</i>Customer</a>
-    </li>
+          </li>
+          <li><a href="{% url 'management:product_view' %}"><i
+               class="material-icons-outlined">arrow_right</i>Products</a>
+          </li>
+          </li>
       </ul>
         </li>
       </div>
